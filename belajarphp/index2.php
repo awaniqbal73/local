@@ -1,7 +1,19 @@
 <?php
-require 'functions.php';
+$conn = mysqli_connect("localhost","root","","dbbelajar");
 
-$mahasiswa = query("SELECT * FROM tabelbelajar")
+//ambil data dari table tablebelajar
+$result = mysqli_query($conn, "SELECT * FROM tabelbelajar");
+// cek hasil var_dump ($result);
+
+//ambil data dari data tabel belajar dari result (istilahnya fetch)
+//1 mysqli_fetch_row()   // Fungsinya Mengembalikan nilai numerik ["1"]
+//2 mysqli_fetch_assoc() // mengembalikan array assositif  ["nrp"]
+//3 mysqli_fetch_array() //  mengembalikan keduanya (double data)["1"] / ["nrp"]
+//4 mysqli_fech_object() // memangil object ->nrp
+
+//while( $blj = mysqli_fetch_assoc($result) ){
+//var_dump($blj);
+//}
 ?>
 
 
@@ -28,7 +40,7 @@ $mahasiswa = query("SELECT * FROM tabelbelajar")
         <th>Jurusan</th>
     </tr>
     <?php $i = 1;?>
-    <?php foreach( $mahasiswa as $row ) : ?>
+    <?php while($row =mysqli_fetch_assoc($result)): ?>
     <tr>
         <td><?= $i; ?></td>
         <td>
@@ -42,7 +54,7 @@ $mahasiswa = query("SELECT * FROM tabelbelajar")
         <td><?= $row["jurusan"];?></td>
     </tr>
     <?php $i++; ?>
-<?php endforeach; ?>
+<?php endwhile; ?>
     </table>
 </body>
 </html>

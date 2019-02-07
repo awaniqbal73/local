@@ -16,6 +16,9 @@ $mahasiswa = query("SELECT * FROM tabelbelajar")
 <body>
     <h1>Daftar Mahasiswa</h1>
 
+    <a href="tambah.php">Tmbah Data Mahaiswa</a>
+<br>
+<br>
     <table border="1" cellpadding="10" cellspacing="0">
 
     <tr>
@@ -33,7 +36,7 @@ $mahasiswa = query("SELECT * FROM tabelbelajar")
         <td><?= $i; ?></td>
         <td>
             <a href="">Ubah</a>
-            <a href="">delete</a>
+            <a href="delete.php?no=<?= $row["no"];?>" onclick="return confirm('Apa yakin di hapus?');">delete</a>
         </td>
         <td><img src="img/<?= $row["gambar"];?>" alt="" style="width:50px;"></td>
         <td><?= $row["nrp"];?></td>
