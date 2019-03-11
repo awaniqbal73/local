@@ -1,8 +1,5 @@
 <?php
-session_start();
-
-
-$_SESSION["nama"] ="Iqbal";
-
+//mebuat cookie
+setcookie('nama','Iqbal', time()+60);
 
 ?>
